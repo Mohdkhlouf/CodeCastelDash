@@ -1,0 +1,23 @@
+.container {
+  margin-top: 20px;
+  /* background-color: var(--softBg); */
+  border-radius: 10px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.add-button {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.table {
+  height: 400;
+  width: "100%";
+}

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: var(--softBg);
+  padding: 20px;
+}
+
+.content {
+  flex: 4;
+  padding: 20px;
+}
