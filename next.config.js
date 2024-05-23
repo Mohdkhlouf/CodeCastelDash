@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
-module.exports = nextConfig;
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-module.exports = {
-  experimental: {
-    // this includes files from the monorepo base two directories up
-    outputFileTracingRoot: path.join(__dirname, "../../"),
-  },
-};
+module.exports = withBundleAnalyzer({
+  // Your existing configuration
+});
