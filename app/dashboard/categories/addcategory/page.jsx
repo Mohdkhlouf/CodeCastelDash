@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { FormControl } from "@mui/material";
 import Box from "@mui/material/Box";
-import SendIcon from "@mui/icons-material/Send";
+
 const AddCategoryPage = () => {
   return (
     <div className={styles.container}>
@@ -32,7 +32,7 @@ const AddCategoryPage = () => {
               defaultValue="What is this Category about?"
             />
           </FormControl>
-          <Button variant="contained" endIcon={<SendIcon />}>
+          <Button variant="contained" endIcon={""}>
             Submit
           </Button>
         </div>

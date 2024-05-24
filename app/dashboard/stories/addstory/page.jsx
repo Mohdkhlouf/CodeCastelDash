@@ -9,8 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import SendIcon from "@mui/icons-material/Send";
+
 const AddStoryPage = () => {
   const [category, setCategory] = React.useState("");
 
@@ -41,7 +40,7 @@ const AddStoryPage = () => {
               role={undefined}
               variant="contained"
               tabIndex={-1}
-              startIcon={<CloudUploadIcon />}
+              startIcon={""}
             >
               Upload Thumbnail
               <VisuallyHiddenInput type="file" />
@@ -75,7 +74,7 @@ const AddStoryPage = () => {
               defaultValue="What is the story about?"
             />
           </FormControl>
-          <Button variant="contained" endIcon={<SendIcon />}>
+          <Button variant="contained" endIcon={""}>
             Submit
           </Button>
         </div>
