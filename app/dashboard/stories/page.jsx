@@ -1,17 +1,26 @@
 "use client";
-import * as React from "react";
+import StoriesList from "@/app/components/dashboard/storieslist/StoriesList";
 import styles from "./stories.module.css";
-import Search from "../../components/dashboard/search/search.jsx";
+import { useQuery } from "@tanstack/react-query";
 
-const storiesPage = () => {
+const StoriesPage = () => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["stories"],
+    queryFn: () =>
+      fetch(
+        "https://code-castle-backend.vercel.app/api/v1/stories/fetch-all-stories"
+      ).then((res) => res.json()),
+  });
+
+  if (isLoading) {
+    return <div className={styles.loading}>Loading..</div>;
+  }
+  if (error) return <div>Error: {error.message}</div>;
   return (
-    <div className={styles.container}>
-      <div className={styles.top}>
-        <Search placeholder={"Search for a story.."} />
-      </div>
-      <div className={styles.table}></div>
+    <div>
+      <StoriesList data={data} />
     </div>
   );
 };
 
-export default storiesPage;
+export default StoriesPage;
