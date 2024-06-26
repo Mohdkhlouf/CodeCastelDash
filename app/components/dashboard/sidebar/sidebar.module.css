@@ -22,11 +22,12 @@
 
 .user-name {
   font-weight: 500;
+  color: var(--sidebar);
 }
 
 .user-role {
   font-size: 12px;
-  color: var(--textSoft);
+  color: var(--sidebarSoft);
 }
 
 .list {
@@ -34,11 +35,15 @@
 }
 
 .category-name {
-  color: var(--textSoft);
+  color: var(--sidebar);
   font-weight: bold;
-  font-size: 13px;
+  font-size: 1rem;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.menu-link {
+  color: var(--sidebar);
 }
 
 .logout {

@@ -1,6 +1,8 @@
+"use client";
 import Card from "../components/dashboard/card/card";
 import styles from "./dashboard.module.css";
 
+import withAuth from "../utils/withauth";
 const HomePage = () => {
   return (
     <div className={styles.wrapper}>
@@ -14,4 +16,4 @@ const HomePage = () => {
     </div>
   );
 };
-export default HomePage;
+export default withAuth(HomePage);

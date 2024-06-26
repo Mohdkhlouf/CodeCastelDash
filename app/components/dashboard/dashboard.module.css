@@ -4,11 +4,15 @@
 
 .sidebar {
   flex: 1;
-  background-color: var(--softBg);
+  background-color: var(--bg);
   padding: 20px;
+  height: 100vh;
 }
 
 .content {
   flex: 4;
   padding: 20px;
+  background-color: var(--bgSoft);
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
 }

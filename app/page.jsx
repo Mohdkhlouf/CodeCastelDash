@@ -1,11 +1,9 @@
-import React from "react";
-
+"use client";
+import { useRouter } from "next/navigation";
 const Mainpage = () => {
-  return (
-    <div>
-      <h1>welcome to my page</h1>
-    </div>
-  );
+  const router = useRouter();
+
+  return router.push("/dashboard");
 };
 
 export default Mainpage;

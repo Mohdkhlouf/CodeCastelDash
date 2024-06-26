@@ -4,21 +4,25 @@ import Sidebar from "../components/dashboard/sidebar/sidebar";
 import styles from "../components/dashboard/dashboard.module.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const Layout = ({ children }) => {
+import { SessionProvider } from "next-auth/react";
+const Layout = ({ children, session }) => {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className={styles.container}>
-        <div className={styles.sidebar}>
-          <Sidebar />
+    <SessionProvider session={session}>
+      <QueryClientProvider client={queryClient}>
+        <div className={styles.container}>
+          <div className={styles.sidebar}>
+            <Sidebar />
+          </div>
+          <div className={styles.content}>
+            <Navbar />
+            {children}
+          </div>
         </div>
-        <div className={styles.content}>
-          <Navbar />
-          {children}
-        </div>
-      </div>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </SessionProvider>
   );
 };
+
 export default Layout;

@@ -14,14 +14,30 @@
 
 .add-button {
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
+  border: 0;
+  background-color: var(--bg);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }
 
+.page-title {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
 .table {
   height: 400;
   width: "100%";
+  background-color: var(--cardbg);
 }
 
 .loading {
   color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

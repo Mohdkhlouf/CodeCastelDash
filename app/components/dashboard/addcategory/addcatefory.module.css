@@ -1,0 +1,27 @@
+.addtable {
+  display: flex;
+  padding: 10px;
+  border: 1px solid;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addform {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addbuttons {
+  display: flex;
+}
+
+.button {
+  border-radius: 10px;
+  padding: 10px;
+  border: 0;
+  background-color: var(--bg);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -1,0 +1,50 @@
+.container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--softBg);
+  border-radius: 1rem;
+}
+.story-page {
+  display: flex;
+  flex-direction: row;
+}
+.thumbnail {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: start;
+  flex: 4;
+}
+
+.single-page-header {
+  display: flex;
+  flex-direction: column;
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.single-page-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+}
+
+.chapters {
+  margin-top: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: aliceblue;
+}
