@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 import DataCard from "@/app/components/dashboard/datacard/datacard";
 import Search from "@/app/components/dashboard/search/search";
 import Link from "next/link";
-import withAuth from "@/app/utils/withauth";
+import withAuth from "@/app/utils/withAuth";
 
 const StoriesPage = () => {
   const { data, isLoading, error } = useQuery({

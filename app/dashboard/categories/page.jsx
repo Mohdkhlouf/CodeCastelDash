@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import AddCategory from "@/app/components/dashboard/addcategory/addcategory.jsx";
 import { useState } from "react";
 import { Spinner } from "@nextui-org/spinner";
-import withAuth from "@/app/utils/withauth.js";
+import withAuth from "@/app/utils/withAuth.js";
 import { CSSProperties } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
