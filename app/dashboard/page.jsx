@@ -2,7 +2,7 @@
 import Card from "../components/dashboard/card/card";
 import styles from "./dashboard.module.css";
 
-import withAuth from "../utils/withauth";
+import withAuth from "../utils/withAuth";
 const HomePage = () => {
   return (
     <div className={styles.wrapper}>
