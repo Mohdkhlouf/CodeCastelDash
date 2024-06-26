@@ -1,5 +1,5 @@
-import DataTable from "@/app/components/dashboard/datatable/datatable";
-import UseFetchDataQuiery from "@/app/hooks/UseFetchDataQuiery";
+import DataTable from "../../../components/dashboard/datatable/datatable";
+import UseFetchDataQuiery from "../../../hooks/useFetchDataQuiery";
 const ChaptersOfCategory = ({ slug, id }) => {
   const { data, error, isLoading } = UseFetchDataQuiery(slug, id);
 

@@ -7,16 +7,22 @@ import DataTable from "@/app/components/dashboard/datatable/datatable.jsx";
 import UseFetchData from "@/app/hooks/useFetchData.jsx";
 import { useState, useEffect } from "react";
 const slug = "chapters";
+
 const ChaptersPage = () => {
+  const [chaptersData, setChaptersData] = useState([]);
   const { data, isLoading, error } = UseFetchData(slug);
+
+  useEffect(() => {
+    if (data && data.chapters) {
+      setChaptersData(data.chapters);
+    }
+  }, [data]);
 
   if (isLoading) {
     return <div className={styles.loading}>Loading..</div>;
   }
 
   if (error) return <div>Error: {error.message}</div>;
-
-  const { chapters } = data;
 
   return (
     <div className={styles.container}>
@@ -27,7 +33,7 @@ const ChaptersPage = () => {
         </Link>
       </div>
       <div className={styles.table}>
-        <DataTable data={chapters} slug={"chapters"} />
+        <DataTable data={chaptersData} slug={"chapters"} />
       </div>
     </div>
   );
