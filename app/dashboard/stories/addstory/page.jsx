@@ -1,6 +1,8 @@
 // AddStories.jsx
 "use client";
 import React, { useState } from "react";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import {
   TextField,
   Button,

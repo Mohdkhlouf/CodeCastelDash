@@ -23,6 +23,7 @@
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "core-js": "^3.37.1",
     "critters": "^0.0.22",
     "f": "^1.4.0",
     "formik": "^2.4.6",
