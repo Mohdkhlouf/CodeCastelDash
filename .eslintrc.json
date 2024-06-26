@@ -1,10 +1,5 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": ["eslint:recommended", "next/core-web-vitals"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -12,13 +7,8 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "plugins": ["react"],
   "rules": {
-    "react/prop-types": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+    "react/prop-types": "off",
+    "no-unused-vars": "warn"
   }
 }
