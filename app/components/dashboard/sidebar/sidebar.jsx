@@ -3,7 +3,7 @@
 import styles from "./sidebar.module.css";
 import MenuLink from "./menuLink/MenuLink.jsx";
 import Image from "next/image";
-
+import withAuth from "@/app/utils/withAuth";
 import { signOut } from "next-auth/react";
 
 import {
@@ -32,11 +32,7 @@ const menuItems = [
         path: "/dashboard/chapters",
         icon: <MdAutoStories />,
       },
-      {
-        title: "New chapter",
-        path: "/dashboard/chapters/addchapter",
-        icon: <MdAutoStories />,
-      },
+
       {
         title: "Users",
         path: "/dashboard/users",

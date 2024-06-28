@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import styles from "./signin.module.css";
 const SignIn = () => {
   const router = useRouter();
 
@@ -25,17 +25,25 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" id="email" name="email" placeholder="Email" required />
-      <input
-        type="password"
-        id="password"
-        name="password"
-        placeholder="Password"
-        required
-      />
-      <button type="submit">Sign In</button>
-    </form>
+    <div className={styles.container}>
+      <form className={styles["signin-form"]} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
   );
 };
 

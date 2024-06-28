@@ -2,15 +2,23 @@ import { TextField, Button, Box } from "@mui/material";
 import styles from "./addchapter.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
+import Image from "next/image";
+import useFileUpload from "@/app/hooks/useFileUpload";
 
-const AddChapter = ({ setOpen }) => {
-  const [chapterTitle, setChapterTitle] = useState("");
-  const [chapterText, setChapterText] = useState("");
-  const [chapterThumbnail, setChapterThumbnail] = useState("");
-  const [chapterAnimation, setChapterAnimation] = useState("");
+const imagePlaceHolder = "/imageplaceholder200x200.png";
+
+const AddChapter = ({ setOpen, storyId }) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  const [animation, setAnimation] = useState("");
+  const [thumbnailViewer, setThumbnailViewer] = useState(imagePlaceHolder);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const queryClient = useQueryClient();
+  const { uploadFile } = useFileUpload();
 
-  const mutation = useMutation({
+  const chapterMutation = useMutation({
     mutationFn: async (chapter) => {
       try {
         const response = await fetch(
@@ -34,72 +42,99 @@ const AddChapter = ({ setOpen }) => {
     },
   });
 
+  const handleImageChange = (e) => {
+    setThumbnail(e.target.files[0]);
+    setThumbnailViewer(URL.createObjectURL(e.target.files[0]));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (chapterTitle) {
-      mutation.mutate({ name: chapterTitle });
+
+    if (!title || !content || !thumbnail || !animation) {
+      return;
     }
+
+    setIsSubmitting(true);
+
+    uploadFile(thumbnail)
+      .then((thumbnailUrl) => submitData(thumbnailUrl))
+      .catch((error) => {
+        console.error("Error:", error);
+      })
+      .finally(() => setIsSubmitting(false));
+  };
+
+  const submitData = (thumbnailUrl) => {
+    const data = {
+      title,
+      content,
+      animation,
+      thumbnail: thumbnailUrl,
+      storyId,
+    };
+
+    return chapterMutation.mutateAsync(data);
   };
 
   return (
-    <div className={styles.addtable}>
-      <Box sx={{ height: "100%", width: "100%" }}>
-        <form onSubmit={handleSubmit} className={styles.addform}>
-          <TextField
-            onChange={(e) => {
-              setChapterTitle(e.target.value);
-            }}
-            value={chapterTitle}
-            id="outlined-basic"
-            label="Category Name"
-            variant="outlined"
-            required
-          />
-          <TextField
-            onChange={(e) => {
-              setChapterText(e.target.value);
-            }}
-            value={chapterText}
-            id="outlined-basic"
-            label="Chapter Text"
-            variant="outlined"
-            required
-          />
-          <TextField
-            onChange={(e) => {
-              setChapterThumbnail(e.target.value);
-            }}
-            value={chapterThumbnail}
-            id="outlined-basic"
-            label="Chapter Thumbnail"
-            variant="outlined"
-            required
-          />
-          <TextField
-            onChange={(e) => {
-              setChapterAnimation(e.target.value);
-            }}
-            value={chapterAnimation}
-            id="outlined-basic"
-            label="Chapter Animation"
-            variant="outlined"
-            required
-          />
-          <div className={styles.addbuttons}>
-            <Button type="submit" className={styles.button}>
-              Submit
-            </Button>
-            <Button
-              onClick={(e) => {
-                e.preventDefault();
-                setOpen(false);
-              }}
-            >
-              Close
-            </Button>
-          </div>
-        </form>
-      </Box>
+    <div className={styles.addTable}>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.formSection}>
+          <Box width="50%">
+            <div className={styles.form}>
+              <TextField
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                id="outlined-basic"
+                label="Chapter Title"
+                variant="outlined"
+                required
+                className={styles.textField}
+              />
+              <TextField
+                onChange={(e) => setContent(e.target.value)}
+                value={content}
+                id="outlined-basic"
+                label="Chapter Content"
+                multiline
+                rows={4}
+                required
+                className={styles.textField}
+              />
+              <TextField
+                onChange={(e) => setAnimation(e.target.value)}
+                value={animation}
+                id="outlined-basic"
+                label="Chapter Animation"
+                variant="outlined"
+                required
+                className={styles.textField}
+              />
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </Button>
+            </div>
+          </Box>
+          <Box width="50%">
+            <div className={styles.thumbnail}>
+              <h3>Add your story thumbnail please</h3>
+              <span>Size must be 200x200</span>
+              <Image
+                width="200"
+                height="200"
+                src={thumbnailViewer}
+                alt="thumbnail"
+              />
+              <input
+                type="file"
+                accept="image/png, image/jpg, image/jpeg"
+                onChange={handleImageChange}
+                required
+              />
+            </div>
+          </Box>
+        </div>
+      </form>
     </div>
   );
 };

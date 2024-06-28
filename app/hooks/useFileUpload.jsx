@@ -18,11 +18,11 @@ const useFileUpload = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "codeCastle");
-
     const response = await fileUploadMutation.mutateAsync(formData);
+    if (!response) console.log("Error with uploading to clodinary.");
+
     return response.secure_url;
   };
-
   return { uploadFile, ...fileUploadMutation };
 };
 

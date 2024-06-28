@@ -110,18 +110,6 @@ const AddStories = ({ setOpen }) => {
       categoryId,
     };
 
-    const ExistingStories = queryClient.getQueryData(["stories"]) || [];
-    const isDuplicate = ExistingStories.some(
-      (story) => story.title === title && story.description === description
-    );
-
-    if (isDuplicate) {
-      setSnackbarMessage("This story already exists.");
-      setSnackbarSeverity("warning");
-      setOpenSnackbar(true);
-      return Promise.reject("Duplicate story");
-    }
-
     return storyMutation.mutateAsync(data);
   };
 
