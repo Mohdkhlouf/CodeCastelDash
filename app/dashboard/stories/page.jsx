@@ -12,7 +12,7 @@ const StoriesPage = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["stories"],
     queryFn: () =>
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/stories`).then((res) =>
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/stories/stories`).then((res) =>
         res.json()
       ),
   });
